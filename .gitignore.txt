@@ -1,0 +1,15 @@
+# Xcode
+## Build generated
+build/
+DerivedData/ 
+## Various settings
+*.pbxuser
+xcuserdata/
+*.generated.swift
+
+## MacOS
+.DS_Store
+
+## CocoaPods
+Pods/
+#*.xcworkspace
