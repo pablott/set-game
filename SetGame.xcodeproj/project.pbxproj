@@ -13,10 +13,12 @@
 		13207D2C24B238DC00F4BE6B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13207D2A24B238DC00F4BE6B /* Main.storyboard */; };
 		13207D2E24B238DE00F4BE6B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13207D2D24B238DE00F4BE6B /* Assets.xcassets */; };
 		13207D3124B238DE00F4BE6B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13207D2F24B238DE00F4BE6B /* LaunchScreen.storyboard */; };
+		1358D83824B3171500540CA8 /* SetGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1358D83724B3171500540CA8 /* SetGame.swift */; };
+		1358D83A24B3178400540CA8 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1358D83924B3178400540CA8 /* Card.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		13207D2124B238DC00F4BE6B /* Set.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Set.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13207D2124B238DC00F4BE6B /* SetGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SetGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13207D2424B238DC00F4BE6B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		13207D2624B238DC00F4BE6B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		13207D2824B238DC00F4BE6B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -24,6 +26,8 @@
 		13207D2D24B238DE00F4BE6B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		13207D3024B238DE00F4BE6B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		13207D3224B238DE00F4BE6B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1358D83724B3171500540CA8 /* SetGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGame.swift; sourceTree = "<group>"; };
+		1358D83924B3178400540CA8 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,7 +52,7 @@
 		13207D2224B238DC00F4BE6B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13207D2124B238DC00F4BE6B /* Set.app */,
+				13207D2124B238DC00F4BE6B /* SetGame.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -56,23 +60,33 @@
 		13207D2324B238DC00F4BE6B /* Set */ = {
 			isa = PBXGroup;
 			children = (
-				13207D2424B238DC00F4BE6B /* AppDelegate.swift */,
+				1358D83624B3106800540CA8 /* SupportingFiles */,
 				13207D2624B238DC00F4BE6B /* SceneDelegate.swift */,
 				13207D2824B238DC00F4BE6B /* ViewController.swift */,
 				13207D2A24B238DC00F4BE6B /* Main.storyboard */,
-				13207D2D24B238DE00F4BE6B /* Assets.xcassets */,
-				13207D2F24B238DE00F4BE6B /* LaunchScreen.storyboard */,
 				13207D3224B238DE00F4BE6B /* Info.plist */,
+				1358D83724B3171500540CA8 /* SetGame.swift */,
+				1358D83924B3178400540CA8 /* Card.swift */,
 			);
 			path = Set;
+			sourceTree = "<group>";
+		};
+		1358D83624B3106800540CA8 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				13207D2D24B238DE00F4BE6B /* Assets.xcassets */,
+				13207D2F24B238DE00F4BE6B /* LaunchScreen.storyboard */,
+				13207D2424B238DC00F4BE6B /* AppDelegate.swift */,
+			);
+			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		13207D2024B238DC00F4BE6B /* Set */ = {
+		13207D2024B238DC00F4BE6B /* SetGame */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13207D3524B238DE00F4BE6B /* Build configuration list for PBXNativeTarget "Set" */;
+			buildConfigurationList = 13207D3524B238DE00F4BE6B /* Build configuration list for PBXNativeTarget "SetGame" */;
 			buildPhases = (
 				13207D1D24B238DC00F4BE6B /* Sources */,
 				13207D1E24B238DC00F4BE6B /* Frameworks */,
@@ -82,9 +96,9 @@
 			);
 			dependencies = (
 			);
-			name = Set;
+			name = SetGame;
 			productName = Set;
-			productReference = 13207D2124B238DC00F4BE6B /* Set.app */;
+			productReference = 13207D2124B238DC00F4BE6B /* SetGame.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -102,7 +116,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 13207D1C24B238DC00F4BE6B /* Build configuration list for PBXProject "Set" */;
+			buildConfigurationList = 13207D1C24B238DC00F4BE6B /* Build configuration list for PBXProject "SetGame" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -115,7 +129,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				13207D2024B238DC00F4BE6B /* Set */,
+				13207D2024B238DC00F4BE6B /* SetGame */,
 			);
 		};
 /* End PBXProject section */
@@ -138,7 +152,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1358D83824B3171500540CA8 /* SetGame.swift in Sources */,
 				13207D2924B238DC00F4BE6B /* ViewController.swift in Sources */,
+				1358D83A24B3178400540CA8 /* Card.swift in Sources */,
 				13207D2524B238DC00F4BE6B /* AppDelegate.swift in Sources */,
 				13207D2724B238DC00F4BE6B /* SceneDelegate.swift in Sources */,
 			);
@@ -317,7 +333,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		13207D1C24B238DC00F4BE6B /* Build configuration list for PBXProject "Set" */ = {
+		13207D1C24B238DC00F4BE6B /* Build configuration list for PBXProject "SetGame" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13207D3324B238DE00F4BE6B /* Debug */,
@@ -326,7 +342,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		13207D3524B238DE00F4BE6B /* Build configuration list for PBXNativeTarget "Set" */ = {
+		13207D3524B238DE00F4BE6B /* Build configuration list for PBXNativeTarget "SetGame" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13207D3624B238DE00F4BE6B /* Debug */,

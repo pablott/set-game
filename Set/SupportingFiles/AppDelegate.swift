@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  Set
+//  SetGame
 //
 //  Created by Pablo Tamayo on 05/07/2020.
 //  Copyright © 2020 Pablo Tamayo. All rights reserved.
