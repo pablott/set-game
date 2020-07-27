@@ -22,7 +22,6 @@ class ViewController: UIViewController {
     @IBAction private func touchDealCardsButton(_ sender: UIButton) {
 //        checkForMatch()
         getCards(numberOfCards: 3)
-//        updateBoard()
     }
 
     // MARK: Properties
@@ -34,7 +33,16 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
         startGame()
+    }
+    
+    func setupUI() {
+        for button in cardButtons {
+            button.layer.borderWidth = 2.0
+            button.layer.borderColor = UIColor.gray.cgColor
+            button.layer.cornerRadius = 8.0
+        }
     }
 
     func startGame() {
@@ -53,17 +61,26 @@ class ViewController: UIViewController {
     }
     
     private func getCards(numberOfCards: Int) {
-        let moreCards = game.dealCards(numberOfcards: numberOfCards)
-        if moreCards.count > 1 {
-            cardsOnTable += moreCards
-            // Assign to buttons
-            assignCards(for: moreCards)
+        let availableButtons = cardButtons.filter {!$0.isEnabled}
+        let numberOfPossibleCards = min(availableButtons.count, numberOfCards)
+        
+        if numberOfPossibleCards > 0 {
+            let moreCards = game.dealCards(numberOfcards: numberOfPossibleCards)
+            print("requested: \(numberOfCards), available places \(availableButtons.count), dealt: \(moreCards.count), remaining in stack \(game.cards.count)")
+            
+            if moreCards.count > 1 {
+                cardsOnTable += moreCards
+                // Assign to buttons
+                assignCards(cards: moreCards)
+            } else {
+                print("No more cards in the stack!")
+            }
         } else {
-            print("No more cards in the stack!")
+            print("No more space on board!")
         }
     }
     
-    private func assignCards(for newCards: [Card]) {
+    private func assignCards(cards newCards: [Card]) {
         var newCards = newCards
         for button in cardButtons {
             if button.isEnabled == false, newCards.count > 0 {

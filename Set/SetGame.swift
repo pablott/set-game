@@ -49,8 +49,6 @@ struct SetGame {
                 cardsDealt.append(randomCard)
             }
         }
-        print("cards dealt: \(cardsDealt)")
-        print("remaining cards in deck: \(cards.count)")
         return cardsDealt
     }
     
