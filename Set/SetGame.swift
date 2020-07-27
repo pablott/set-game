@@ -49,6 +49,7 @@ struct SetGame {
                 cardsDealt.append(randomCard)
             }
         }
+        print("cards dealt: \(cardsDealt)")
         print("remaining cards in deck: \(cards.count)")
         return cardsDealt
     }
@@ -56,7 +57,6 @@ struct SetGame {
     mutating private func getRandomCard() -> Card? {
         if cards.count > 0 {
             let randomIndex = cards.index(cards.startIndex, offsetBy: cards.count.arc4random)
-            print("randomIndex: \(randomIndex)")
             return cards.remove(at: randomIndex)
         }
         return nil

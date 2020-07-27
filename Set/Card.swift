@@ -36,5 +36,63 @@ struct Card {
     var shape: Shape
     var fill: Fill
     
-    var marker: NSAttributedString?
+    var marker: NSAttributedString? {
+        get {
+            makeCardMarker(for: self)
+        }
+    }
+}
+
+// MARK: Decorate cards
+
+private extension Card {
+    
+    // MARK: Styling
+    
+    func getStyling(for card: Card) -> (color: UIColor, char: Character, fill: CGFloat) {
+        var color: UIColor
+        var char: Character
+        var fill: CGFloat
+        
+        switch self.color {
+        case .color1:
+            color = UIColor(named: "red")!
+        case .color2:
+            color = UIColor(named: "green")!
+        case .color3:
+            color = UIColor(named: "blue")!
+        }
+        
+        switch self.shape {
+        case .shape1:
+            char = Character("▲")
+        case .shape2:
+            char = Character("●")
+        case .shape3:
+            char = Character("■")
+        }
+        
+        switch self.fill {
+        case .fill1:
+            fill = 1.0
+        case .fill2:
+            fill = 0.25
+        case .fill3:
+            fill = 0.0
+        }
+        
+        return (color: color, char: char, fill: fill)
+    }
+    
+    func makeCardMarker(for card: Card) -> NSAttributedString {
+        let style = getStyling(for: card)
+        let attributes: [NSAttributedString.Key: Any] = [
+            NSAttributedString.Key.foregroundColor : style.color.withAlphaComponent(style.fill),
+            NSAttributedString.Key.strokeColor : style.color,
+            NSAttributedString.Key.strokeWidth : -10.0
+        ]
+        let attrString = NSAttributedString(string: String(style.char), attributes: attributes)
+        return attrString
+    }
+        
 }

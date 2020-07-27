@@ -17,14 +17,12 @@ class ViewController: UIViewController {
     @IBOutlet private weak var scoreLabel: UILabel!
     
     @IBAction func touchStartGameButton(_ sender: UIButton) {
-        game.createCardDeck()
-        getCards()
-//        cupdateBoard()
+        startGame()
     }
     @IBAction private func touchDealCardsButton(_ sender: UIButton) {
 //        checkForMatch()
-        getCards()
-//        cupdateBoard()
+        getCards(numberOfCards: 3)
+//        updateBoard()
     }
 
     // MARK: Properties
@@ -36,32 +34,64 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        startGame()
     }
 
-    func getCards() {
-        cardsOnTable = game.dealCards(numberOfcards: 12)
-        print(cardsOnTable)
-        
-        // Get styling for selected cards
-        for index in cardsOnTable.indices {
-            cardsOnTable[index].marker = makeCardMarker(for: cardsOnTable[index])
-            print(cardsOnTable[index].marker?.string)
+    func startGame() {
+        resetBoard()
+        game.createCardDeck()
+        getCards(numberOfCards: 12)
+    }
+    
+    private func resetBoard() {
+        cardsOnTable = []
+        for button in cardButtons {
+            button.isEnabled = false
+            button.backgroundColor = UIColor.red
+            button.setAttributedTitle(nil, for: .normal)
         }
-        
-        // Assign to buttons
-        for index in cardsOnTable.indices {
-            cardButtons[index].setAttributedTitle(cardsOnTable[index].marker, for: .normal)
+    }
+    
+    private func getCards(numberOfCards: Int) {
+        let moreCards = game.dealCards(numberOfcards: numberOfCards)
+        if moreCards.count > 1 {
+            cardsOnTable += moreCards
+            // Assign to buttons
+            assignCards(for: moreCards)
+        } else {
+            print("No more cards in the stack!")
         }
-        
-        
+    }
+    
+    private func assignCards(for newCards: [Card]) {
+        var newCards = newCards
+        for button in cardButtons {
+            if button.isEnabled == false, newCards.count > 0 {
+                button.isEnabled = true
+                let newCard = newCards.remove(at: 0)
+                button.setAttributedTitle(newCard.marker, for: .normal)
+                button.backgroundColor = UIColor.green
+            }
+        }
     }
 }
 
 // MARK: Game logic
 
+private extension ViewController {
+    // on touch 3 more cards
+    // button selection logic
+}
+
+// MARK: Scoring logic
+
+//private extension ViewController {
+//
+//}
+
 // MARK: UI
 
-extension ViewController {
+private extension ViewController {
     func updateLabels() {
         
     }
@@ -70,61 +100,6 @@ extension ViewController {
         
     }
     
-    func dealCards() {
-        
-    }
+
 }
 
-// MARK: Decorate cards
-
-extension ViewController {
-    
-    // MARK: Styling
-    
-    private func getStyling(for card: Card) -> (color: UIColor, char: Character, fill: CGFloat) {
-        var color: UIColor
-        var char: Character
-        var fill: CGFloat
-        
-        switch card.color {
-        case .color1:
-            color = UIColor(named: "red")!
-        case .color2:
-            color = UIColor(named: "green")!
-        case .color3:
-            color = UIColor(named: "blue")!
-        }
-        
-        switch card.shape {
-        case .shape1:
-            char = Character("▲")
-        case .shape2:
-            char = Character("●")
-        case .shape3:
-            char = Character("■")
-        }
-        
-        switch card.fill {
-        case .fill1:
-            fill = 1.0
-        case .fill2:
-            fill = 0.25
-        case .fill3:
-            fill = 0.0
-        }
-        
-        return (color: color, char: char, fill: fill)
-    }
-    
-    private func makeCardMarker(for card: Card) -> NSAttributedString {
-        let style = getStyling(for: card)
-        let attributes: [NSAttributedString.Key: Any] = [
-            NSAttributedString.Key.foregroundColor : style.color.withAlphaComponent(style.fill),
-            NSAttributedString.Key.strokeColor : style.color,
-            NSAttributedString.Key.strokeWidth : -10.0
-        ]
-        let attrString = NSAttributedString(string: String(style.char), attributes: attributes)
-        return attrString
-    }
-        
-}
