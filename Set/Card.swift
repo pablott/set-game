@@ -17,13 +17,13 @@ struct Card {
         case color2
         case color3
     }
-
+    
     enum Shape: CaseIterable {
         case shape1
         case shape2
         case shape3
     }
-
+    
     enum Fill: CaseIterable {
         case fill1
         case fill2
@@ -31,7 +31,7 @@ struct Card {
     }
     
     // MARK: Properties
-
+    
     var color: Color
     var shape: Shape
     var fill: Fill
@@ -94,5 +94,8 @@ private extension Card {
         let attrString = NSAttributedString(string: String(style.char), attributes: attributes)
         return attrString
     }
-        
+}
+
+extension Card: Equatable {
+    
 }

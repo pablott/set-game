@@ -29,6 +29,12 @@ class ViewController: UIViewController {
     var game = SetGame()
     var cardsOnTable = [Card]()
     
+    var selectedCards: [UIButton] {
+        get {
+            cardButtons.filter {$0.isSelected}
+        }
+    }
+    
     // MARK: Lifecycle
     
     override func viewDidLoad() {
@@ -42,6 +48,8 @@ class ViewController: UIViewController {
             button.layer.borderWidth = 2.0
             button.layer.borderColor = UIColor.gray.cgColor
             button.layer.cornerRadius = 8.0
+            button.addTarget(self, action: #selector(self.selectCard), for: .touchUpInside)
+        
         }
     }
 
@@ -112,11 +120,16 @@ private extension ViewController {
     func updateLabels() {
         
     }
-    
-    func updateCards() {
-        
-    }
-    
 
+    @objc func selectCard(_ button: UIButton) {
+        if !button.isSelected {
+            button.layer.borderColor = UIColor.blue.cgColor
+            button.isSelected = true
+        } else {
+            button.layer.borderColor = UIColor.gray.cgColor
+            button.isSelected = false
+        }
+        print(selectedCards)
+    }
 }
 
